@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Wedding Invitation · Puja & Yaibeelen</title>
+  <!-- Google Fonts: Cormorant Garamond (elegant serif), Montserrat (clean sans), Noto Sans Meetei Mayek (script) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&family=Noto+Sans+Meetei+Mayek:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ----- RESET & BASE ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e7dfd7;  /* warm neutral backdrop */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      padding: 16px;
+    }
+
+    /* ----- IPHONE FRAME (iPhone 14/15 style) ----- */
+    .iphone-frame {
+      width: 390px;              /* standard iPhone width */
+      max-width: 100%;
+      background: #ffffff;
+      border-radius: 48px;
+      box-shadow: 
+        0 30px 60px -20px rgba(0, 0, 0, 0.4),
+        0 0 0 8px #f0f0f0,        /* outer bevel */
+        0 0 0 12px #c0b7a8;       /* metallic border */
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 390 / 844;   /* iPhone aspect ratio */
+    }
+
+    /* dynamic island / notch */
+    .dynamic-island {
+      width: 120px;
+      height: 34px;
+      background: #111;
+      border-radius: 20px;
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.15);
+    }
+
+    /* ----- MAIN SCREEN CONTENT ----- */
+    .screen {
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
+      scrollbar-width: none;     /* Firefox */
+      -ms-overflow-style: none;  /* IE/Edge */
+      background: #fffcf8;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 56px 20px 24px 20px; /* top padding clears dynamic island */
+      border-radius: 40px;          /* inner screen corners */
+    }
+
+    .screen::-webkit-scrollbar {
+      display: none;              /* Chrome/Safari */
+    }
+
+    /* ----- WHITE FLORAL BACKGROUND (subtle, elegant) ----- */
+    .floral-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"><path d="M100 20 Q110 40 100 60 Q90 40 100 20Z" fill="%23efe6dd"/><path d="M100 140 Q110 160 100 180 Q90 160 100 140Z" fill="%23efe6dd"/><path d="M20 100 Q40 110 60 100 Q40 90 20 100Z" fill="%23efe6dd"/><path d="M140 100 Q160 110 180 100 Q160 90 140 100Z" fill="%23efe6dd"/><circle cx="100" cy="100" r="8" fill="%23e8dcd0"/><circle cx="60" cy="60" r="6" fill="%23e0d2c4"/><circle cx="140" cy="60" r="6" fill="%23e0d2c4"/><circle cx="60" cy="140" r="6" fill="%23e0d2c4"/><circle cx="140" cy="140" r="6" fill="%23e0d2c4"/><path d="M80 80 Q85 90 80 100 Q75 90 80 80Z" fill="%23f5eee8"/><path d="M120 120 Q125 130 120 140 Q115 130 120 120Z" fill="%23f5eee8"/></svg>');
+      background-repeat: repeat;
+      background-size: 180px 180px;
+    }
+
+    /* ----- CONTENT LAYER ----- */
+    .invitation-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* small floral ornament */
+    .ornament {
+      font-size: 20px;
+      letter-spacing: 8px;
+      color: #d4c2b2;
+      margin: 4px 0 6px;
+      font-weight: 300;
+    }
+
+    .wedding-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #b09a86;
+      margin-bottom: 6px;
+    }
+
+    /* ----- NAMES ----- */
+    .name-block {
+      margin: 6px 0 4px;
+    }
+
+    .bride-name, .groom-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 600;
+      color: #3f3226;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+    }
+
+    .meetei-script {
+      font-family: 'Noto Sans Meetei Mayek', 'Cormorant Garamond', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #7b6653;
+      margin-top: 2px;
+      letter-spacing: 0.3px;
+    }
+
+    .parent-details {
+      font-size: 12px;
+      font-weight: 400;
+      color: #6a5846;
+      line-height: 1.5;
+      letter-spacing: 0.3px;
+      margin: 6px 0 2px;
+    }
+
+    .address {
+      font-size: 11px;
+      font-weight: 400;
+      color: #8d7b69;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    /* separator line */
+    .separator {
+      width: 60px;
+      height: 1px;
+      background: #d9c8b8;
+      margin: 10px auto;
+    }
+
+    /* ----- EVENTS ----- */
+    .event-section {
+      width: 100%;
+      margin: 4px 0;
+    }
+
+    .event-item {
+      margin-bottom: 12px;
+    }
+
+    .event-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #9c8977;
+      margin-bottom: 2px;
+    }
+
+    .event-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      font-weight: 500;
+      color: #3f3226;
+    }
+
+    .event-time {
+      font-size: 13px;
+      font-weight: 400;
+      color: #6a5846;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .venue-block {
+      margin-top: 10px;
+    }
+
+    .venue-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #9c8977;
+    }
+
+    .venue-address {
+      font-size: 14px;
+      font-weight: 400;
+      color: #3f3226;
+      margin-top: 2px;
+    }
+
+    /* footer note */
+    .footer-note {
+      margin-top: 16px;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #cbb9a8;
+      text-transform: uppercase;
+    }
+
+    /* subtle floral icons */
+    .flower-icon {
+      display: inline-block;
+      font-size: 16px;
+      color: #d4c2b2;
+      margin: 0 4px;
+      line-height: 1;
+    }
+
+    /* responsive text for smaller widths */
+    @media (max-width: 400px) {
+      .bride-name, .groom-name {
+        font-size: 30px;
+      }
+      .meetei-script {
+        font-size: 14px;
+      }
+      .event-date {
+        font-size: 19px;
+      }
+      .parent-details {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="iphone-frame">
+    <!-- Dynamic Island / notch -->
+    <div class="dynamic-island"></div>
+
+    <div class="screen">
+      <!-- White flower background pattern (subtle) -->
+      <div class="floral-bg"></div>
+
+      <div class="invitation-content">
+        <!-- small floral ornament -->
+        <div class="ornament">✽ ✽ ✽</div>
+        <div class="wedding-heading">Wedding Invitation</div>
+
+        <!-- BRIDE -->
+        <div class="name-block">
+          <div class="bride-name">Puja Laishram</div>
+          <div class="meetei-script">( ꯄꯨꯖꯥ ꯂꯥꯏꯁꯔꯝ )</div>
+          <div class="parent-details">
+            D/o Jiten Laishram &amp; L Bala Leima
+          </div>
+          <div class="address">Wangoo Sandangkhong</div>
+        </div>
+
+        <!-- separator -->
+        <div class="separator"></div>
+
+        <!-- GROOM -->
+        <div class="name-block">
+          <div class="groom-name">Yaibeelen Mangang</div>
+          <div class="meetei-script">( ꯌꯥꯏꯕꯤꯂꯦꯟ ꯃꯉꯥꯡ )</div>
+          <div class="parent-details">
+            S/o Sharatchandra Mangang &amp; Subita Leima
+          </div>
+          <div class="address">Chajing Khunou</div>
+        </div>
+
+        <!-- separator (wider) -->
+        <div class="separator" style="width: 100px; margin: 12px auto;"></div>
+
+        <!-- EVENTS -->
+        <div class="event-section">
+          <div class="event-item">
+            <div class="event-label">Heijingpot</div>
+            <div class="event-date">19 December 2026</div>
+            <div class="event-time">09:00 am</div>
+          </div>
+
+          <div class="event-item">
+            <div class="event-label">Luhongba</div>
+            <div class="event-date">21 December 2026</div>
+            <div class="event-time">02:30 pm</div>
+          </div>
+
+          <!-- VENUE -->
+          <div class="venue-block">
+            <div class="venue-label">Venue</div>
+            <div class="venue-address">Bride's Residence</div>
+          </div>
+        </div>
+
+        <!-- extra floral accent -->
+        <div class="ornament" style="margin-top: 10px;">❀ ❀ ❀</div>
+        <div class="footer-note">With love &amp; blessings</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
